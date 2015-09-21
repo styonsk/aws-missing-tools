@@ -22,11 +22,11 @@ ec2-automate-backup requires one of the following two parameters be provided:
 
 `-v <volumeid>` - the "volumeid" parameter is required to select EBS volumes for snapshot if ec2-automate-backup is run using the "volumeid" selection method - the "volumeid" selection method is the default selection method.
     
-`-t <tag>` - the "tag" parameter is required if the "method" of selecting EBS volumes for snapshot is by tag (-s tag). The format for tag is key=value (example: Backup=true) and the correct method for running ec2-automate-backup in this manner is ec2-automate-backup -s tag -t Backup=true.
+`-t <tag>` - the "tag" parameter is required if the "method" of selecting EBS volumes for snapshot is by tag (-s tag) or instancetag (-s instance tag). The format for tag is key=value (example: Backup=true) and the correct method for running ec2-automate-backup in this manner is ec2-automate-backup -s tag -t Backup=true.
 ## Optional Parameters:
 `-r <region>` - the region that contains the EBS volumes for which you wish to have a snapshot created.
 
-`-s <selection_method>` - the selection method by which EBS volumes will be selected. Currently supported selection methods are "volumeid" and "tag." The selection method "volumeid" identifies EBS volumes for which a snapshot should be taken by volume id whereas the selection method "tag" identifies EBS volumes for which a snapshot should be taken by a key=value format tag.
+`-s <selection_method>` - the selection method by which EBS volumes will be selected. Currently supported selection methods are "volumeid" "tag" and "instancetag." The selection method "volumeid" identifies EBS volumes for which a snapshot should be taken by volume id. The selection method "tag" identifies EBS volumes for which a snapshot should be taken by a key=value format tag. The "instancetag" selection method identifies EBS volumes attached to instances with a given tag.
 
 `-c <cron_primer_file>` - running with the -c option and a providing a file will cause ec2-automate-backup to source a file for environmental configuration - ideal for running ec2-automate-backup under cron. An example cron primer file is located in the "Resources" directory and is called cron-primer.sh.
 
